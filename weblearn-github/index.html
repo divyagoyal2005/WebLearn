@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An interactive Web Technology course with lessons, quizzes, flashcards, notes and progress tracking." />
+  <meta name="theme-color" content="#6757e8" />
+  <title>WebLearn — Web Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="WebLearn home"><span class="brand-mark">W</span><span>web<span class="brand-light">learn</span><small>YOUR WEB TECHNOLOGY HUB</small></span></a>
+      <div class="side-label">LEARNING</div>
+      <nav id="unitNav" class="unit-nav" aria-label="Course units"></nav>
+      <div class="sidebar-bottom">
+        <div class="mini-progress">
+          <div class="mini-progress-top"><span>Course progress</span><b id="sideProgressText">0%</b></div>
+          <div class="progress-track"><span id="sideProgressBar"></span></div>
+          <small>Keep showing up. You’ve got this!</small>
+        </div>
+        <button class="nav-link" id="resetProgressBtn" type="button">↻ Reset my progress</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu" id="menuBtn" aria-label="Open menu">☰</button>
+        <div class="breadcrumb">My courses <span>/</span> <b>Web Technology</b></div>
+        <div class="top-actions">
+          <span class="streak-chip">✦ <b id="streakText">1</b> day learning</span>
+          <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle theme">☾</button>
+          <div class="avatar">WL</div>
+        </div>
+      </header>
+
+      <section class="welcome">
+        <div class="welcome-copy">
+          <div class="eyebrow"><span class="live-dot"></span> YOUR PERSONAL LEARNING SPACE</div>
+          <h1>Make the web<br><em>your playground.</em></h1>
+          <p>Learn the concepts. Test your knowledge. Build confidence—one topic at a time.</p>
+          <div class="welcome-actions">
+            <button class="primary-btn" id="continueBtn">Continue learning <span>→</span></button>
+            <span class="welcome-note">5 units · Topic-wise lessons · Quick quizzes</span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="hero-code">&lt;/&gt;</div>
+          <div class="float-card card-html"><b>HTML</b><span>Structure</span></div>
+          <div class="float-card card-css"><b>CSS</b><span>Design</span></div>
+          <div class="float-card card-js"><b>JS</b><span>Interaction</span></div>
+          <div class="sparkle sparkle-one">✦</div><div class="sparkle sparkle-two">✧</div>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Learning statistics">
+        <article class="stat-card"><div class="stat-icon purple">▤</div><div><small>COURSE UNITS</small><strong>05</strong><span>Complete syllabus</span></div></article>
+        <article class="stat-card"><div class="stat-icon mint">✓</div><div><small>UNITS COMPLETED</small><strong id="completedCount">0</strong><span>Keep your momentum</span></div></article>
+        <article class="stat-card"><div class="stat-icon peach">◷</div><div><small>TOPICS TO EXPLORE</small><strong id="topicCount">0</strong><span>Across all five units</span></div></article>
+        <article class="stat-card"><div class="stat-icon blue">◎</div><div><small>QUIZ BEST SCORE</small><strong id="bestScore">—</strong><span>Your personal best</span></div></article>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading"><div><div class="eyebrow purple-text">YOUR ROADMAP</div><h2>Explore the syllabus</h2><p>Pick a unit and start learning at your own pace.</p></div><div class="unit-count">01 — 05</div></div>
+        <div class="unit-grid" id="unitGrid"></div>
+      </section>
+
+      <section class="learning-layout" id="learningSection">
+        <div class="lesson-column">
+          <div class="section-heading lesson-heading"><div><div class="eyebrow purple-text" id="unitEyebrow">UNIT 01</div><h2 id="unitTitle">Internet & the World Wide Web</h2><p id="unitDescription"></p></div><span class="duration-badge" id="unitDuration"></span></div>
+          <div class="lesson-toolbar">
+            <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Find a topic in this course..." autocomplete="off"></label>
+            <button class="soft-btn" id="showAllBtn" type="button">Expand all</button>
+          </div>
+          <div id="lessonList" class="lesson-list"></div>
+        </div>
+
+        <aside class="study-column">
+          <section class="widget progress-widget">
+            <div class="widget-heading"><div><span class="widget-kicker">YOUR ACTIVITY</span><h3>Unit checklist</h3></div><span class="widget-icon">✓</span></div>
+            <p class="widget-description">Tick off topics as you finish them.</p>
+            <div class="unit-progress-line"><span id="unitProgressBar"></span></div>
+            <div class="checklist" id="checklist"></div>
+            <button class="complete-btn" id="completeUnitBtn">Mark unit complete ✓</button>
+          </section>
+          <section class="widget quiz-widget">
+            <div class="widget-heading"><div><span class="widget-kicker">TEST YOURSELF</span><h3>Quick quiz</h3></div><span class="widget-icon">✦</span></div>
+            <p class="widget-description">A few questions to check what you remember.</p>
+            <div id="quizArea"></div>
+          </section>
+          <section class="widget notes-widget">
+            <div class="widget-heading"><div><span class="widget-kicker">PERSONAL SPACE</span><h3>My study notes</h3></div><span class="widget-icon">✎</span></div>
+            <textarea id="notesInput" placeholder="Write a definition, example or reminder..."></textarea>
+            <div class="save-status" id="saveStatus">Saved on this device</div>
+          </section>
+        </aside>
+      </section>
+
+      <footer class="footer"><span>WebLearn</span> · Learn a little every day. Build something amazing.</footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
